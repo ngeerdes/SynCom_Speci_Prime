@@ -1,5 +1,5 @@
 # Define the isolates array
-isolates=("PvR061" "PvR090" "PvR096" "PvR101" "PvR102" "PvR112" "PvR115")
+isolates=("PvR021" "PvR079" "PvR083" "PvR122" "PvR147") 
 
 # Loop through each isolate 
 for isolate in "${isolates[@]}"; do
