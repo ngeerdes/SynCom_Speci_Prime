@@ -1,14 +1,12 @@
 
 # Define an array of isolate IDs 
 
-isolates=("PvR061" "PvR090" "PvR096" "PvR101" "PvR102" "PvR112" "PvR115") 
+isolates=("PvR021" "PvR079" "PvR083" "PvR122" "PvR147") 
 
 # Loop through each isolate and execute the Python script 
-for isolate in "${isolates[@]}"; do
+for isolates in "${isolates[@]}"; do
     python isolate-primer-target-check.py \
-        "${isolate}-parsed-primers.fasta.renamed.syncom13.blast.out.target" \
-        "../${isolate}-parsed-primers.fasta.renamed" \
-        "../primer3-filtered/${isolate}-parsed-primers.fasta.renamed.targethits"
+        "../../validation/syncom/blast-out/${isolates}.syncom.blast.out.target" \
+        "../../primers/primers-fasta/${isolates}.primers.fasta.renamed" \
+        "../hit-target/${isolates}.hit.target.fasta"
 done
-
-python isolate-primer-target-check.py PvR045-parsed-primers.fasta.renamed.syncom13.blast.out.target ../PvR045-parsed-primers.fasta.renamed ../primer3-filtered/PvR045-parsed-primers.fasta.renamed.targethits
