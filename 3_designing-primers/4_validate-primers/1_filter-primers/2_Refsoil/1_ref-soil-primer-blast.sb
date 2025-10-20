@@ -6,31 +6,21 @@
 #SBATCH --time=24:00:00   # walltime limit (HH:MM:SS)
 #SBATCH --nodes=1   # number of nodes
 #SBATCH --ntasks-per-node=36   # 36 processor core(s) per node 
-#SBATCH --job-name="PvR061-90-96-101-102-112-115-primers-refsoil-blast"
+#SBATCH --job-name="primers-refsoil-blast"
 #SBATCH --mail-user=ngeerdes@iastate.edu   # email address
-#SBATCH --mail-type=BEGIN
-#SBATCH --mail-type=END
-#SBATCH --mail-type=FAIL
-#SBATCH --output="slurm-PvR061-90-96-101-102-112-115-primers-refsoil-blast.out" # job standard output file (%j replaced by job id)
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --output="slurm-primers-refsoil-blast.out" # job standard output file (%j replaced by job id)
 
-# LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
-# Define the isolates array
-isolates=("PvR061" "PvR090" "PvR096" "PvR101" "PvR102" "PvR112" "PvR115")
+# Define an array of isolate IDs 
 
-# Loop through each isolate and run the BLAST command
-for isolate in "${isolates[@]}"; do
-    echo "Running BLAST for isolate: $isolate"
+isolates=("PvR021" "PvR079" "PvR083" "PvR122" "PvR147") 
+
+# Loop through each isolate and execute the Python script 
+for isolates in "${isolates[@]}" ; do 
+    echo "Running BLAST for isolate: $isolates" 
     blastn -task blastn-short \
-        -query "primer3-filtered/${isolate}-parsed-primers.fasta.renamed.targethits.filtered.syncom13" \
-        -db /work/adina/ngeerdes/syncom_genomes/assemblies/fastq_pass/all-refsoil \
-        -out "primer-blast-out/${isolate}-parsed-primers.fasta.renamed.syncom13.refsoil.blast.out" \
-        -outfmt 6 \
-        -num_threads 36
+            -query "../../validation/syncom/filtered/${isolates}.filtered.syncom.primers.fasta" \
+            -db /work/adina/ngeerdes/databases/refsoil/all-refsoil \
+            -out "../../validation/refsoil/blast-out/${isolates}.refsoil.blast.out" \
+            -outfmt 6 
 done
-
-
-
-
-PvR112-parsed-primers.fasta.renamed.targethits.filtered.syncom13 
-
-PvR112-parsed-primers.fasta.renamed.targethits.filtered.syncom13
