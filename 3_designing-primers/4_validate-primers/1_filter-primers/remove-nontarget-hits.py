@@ -12,7 +12,7 @@ def filter_primers_by_blast(blast_file, fasta_file, output_fasta):
             mismatches = int(fields[4])  # Mismatches (5th column in BLAST format 6)
 
             # Mark primers for removal if alignment length >= 16
-            if alignment_length >= 16 and mismatches == 0:
+            if alignment_length >= 17 and mismatches == 0:
                 primers_to_remove.add(query_id)
 
     # Step 2: Ensure both forward (_left) and reverse (_right) primers are removed if one is flagged
