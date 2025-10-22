@@ -21,6 +21,6 @@ for isolates in "${isolates[@]}" ; do
     blastn -task blastn-short \
             -query "../../validation/refsoil/filtered/${isolates}.filtered.syncom.refsoil.primers.fasta" \
             -db /work/adina/ngeerdes/databases/nacbi-nt/nt \
-            -out "../../validation/nt/blast-out/${isolates}.nt.blast.out" \
+            -out "../../validation/nt/blast-out-2/${isolates}.nt.blast.out" \
             -outfmt 6 
 done
