@@ -3,13 +3,13 @@
 # Copy/paste this job script into a text file and submit with the command:
 #    sbatch thefilename
 
-#SBATCH --time=24:00:00   # walltime limit (HH:MM:SS)
+#SBATCH --time=48:00:00   # walltime limit (HH:MM:SS)
 #SBATCH --nodes=1   # number of nodes
 #SBATCH --ntasks-per-node=36   # 36 processor core(s) per node 
 #SBATCH --job-name="primers-nt-blast"
 #SBATCH --mail-user=ngeerdes@iastate.edu   # email address
 #SBATCH --mail-type=BEGIN,END,FAIL
-#SBATCH --output="slurm-primers-nt-blast.out" # job standard output file (%j replaced by job id)
+#SBATCH --output="slurm-primers-nt-blast-updated.out" # job standard output file (%j replaced by job id)
 
 # Define an array of isolate IDs 
 
@@ -22,5 +22,6 @@ for isolates in "${isolates[@]}" ; do
             -query "../../validation/refsoil/filtered/${isolates}.filtered.syncom.refsoil.primers.fasta" \
             -db /work/adina/ngeerdes/databases/nacbi-nt/nt \
             -out "../../validation/nt/blast-out-2/${isolates}.nt.blast.out" \
-            -outfmt 6 
+            -outfmt 6 \
+            -num_threads 36 
 done
