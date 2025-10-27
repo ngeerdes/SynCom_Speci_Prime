@@ -20,8 +20,8 @@ for isolates in "${isolates[@]}" ; do
     echo "Running BLAST for isolate: $isolates" 
     blastn -task blastn-short \
             -query "../../validation/refsoil/filtered/${isolates}.filtered.syncom.refsoil.primers.fasta" \
-            -db /work/adina/ngeerdes/databases/nacbi-nt/nt \
-            -out "../../validation/nt/blast-out-2/${isolates}.nt.blast.out" \
+            -db /work/adina/ngeerdes/databases/ncbi-nt/nt \
+            -out "../../validation/nt/blast-out/${isolates}.nt.blast.out" \
             -outfmt 6 \
             -num_threads 36 
 done
