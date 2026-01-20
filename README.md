@@ -1,5 +1,4 @@
-# SynCom_Speci_Prime
-A developing primer design pipeline for the detection of isolates within a bacterial synthetic community
+A primer design resource for the detection of bacterial isolates within a synthetic community
 
 This repository contains scripts to annotate genomes, filter sequences, and design primers for detecting isolates in a synthetic bacterial community. The workflow moves from raw assemblies through annotation to targeted primer generation.
 
